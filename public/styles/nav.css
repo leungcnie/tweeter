@@ -11,3 +11,11 @@ nav {
 span {
   font-family: 'Bungee', sans-serif;
 }
+
+/* EXTRA: adding arrow icon */
+.material-icons {
+  display: flex;
+  color: red;
+  margin-left: 43%;
+  transform: rotate(90deg);
+}
