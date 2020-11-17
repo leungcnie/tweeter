@@ -8,3 +8,8 @@ header {
   background-color: #d68b00;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
+
+h2 {
+  margin-top: 0;
+  color: #FFFFFF;
+}
