@@ -13,7 +13,7 @@ span {
 }
 
 /* EXTRA: adding arrow icon */
-.material-icons {
+nav div span {
   display: flex;
   color: red;
   margin-left: 43%;
