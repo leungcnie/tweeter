@@ -89,4 +89,11 @@ $(document).ready(() => {
 
   renderTweets(data);
 
+  // Submit form data using AJAX
+  $('form').submit((event) => {
+    event.preventDefault();
+    const queryString = $('form').serialize();
+    $.post('/tweets', queryString);
+  })
+
 })
