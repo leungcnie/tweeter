@@ -55,6 +55,7 @@ article.tweet header div {
 }
 
 .username {
+  font-family: inherit;
   color: #545149;
   margin-left: 0.5em;
 }
@@ -63,4 +64,8 @@ article.tweet header div {
   color: #a2a3eb;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
+}
+
+main header {
+  margin-top: 0;
 }
