@@ -7,16 +7,16 @@
 }
 
 /* Hover state */
-article.tweet:hover {
+article:hover {
   box-shadow: 0.5em 0.5em #a2a3eb;
 }
 
-article.tweet:hover .tweet-icons {
+article:hover .tweet-icons {
   display: flex;
   color: #4056A1;
 }
 
-article.tweet:hover .handle {
+article:hover .handle {
   display: flex;
   color: #a2a3eb;
   font-family: 'Source Sans Pro', sans-serif;
@@ -43,21 +43,21 @@ footer {
 }
 
 /* Single tweet */
-article.tweet {
+article {
   width: 100%;
   padding: 1em;
   margin: 1.5em 0 1.5em 0;
   border: 4px solid #545149;
 }
 
-article.tweet header {
+article header {
   flex-direction: row;
   justify-content: space-between;
   background-color: inherit;
   height: auto;
 }
 
-article.tweet header div {
+article header div {
   display: flex;
   align-items: center;
 }
