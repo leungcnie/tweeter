@@ -8,9 +8,10 @@ $(document).ready(() => {
 
   // Append each tweet element to #tweets-container
   const renderTweets = function (tweets) {
+    const tweetsContainer = $('#tweets-container').html('');
     for (let i = tweets.length - 1; i >= 0; i--) {
       let $tweet = createTweetElement(tweets[i]);
-      $('#tweets-container').append($tweet);
+      tweetsContainer.append($tweet);
     }
   }
 
@@ -64,14 +65,21 @@ $(document).ready(() => {
   $('form').submit((event) => {
     event.preventDefault();
     const tweetText = $('#tweet-text').val();
+
+    // Tweet validation
     if (!tweetText) {
       return alert("You can't submit an empty tweet!");
     }
     if (tweetText.length > 140) {
       return alert(`Your tweet is ${Math.abs(140 - tweetText.length)} character(s) over the limit.`);
     }
+
+    // Submit form data
     const queryString = $('form').serialize();
-    $.post('/tweets', queryString);
+    $.post('/tweets', queryString, (data, status) => {
+      $('#tweet-text').val('');
+      loadTweets();
+    });
   })
 
   // Fetch tweets from /tweets page
