@@ -43,48 +43,48 @@ $(document).ready(() => {
 
   // Create tweet <article> element from tweet object
   const createTweetElement = (tweetObj) => {
-    const avatar = tweetObj.user.avatars;
-    const name = tweetObj.user.name;
-    const handle = tweetObj.user.handle;
-    const text = tweetObj.content.text;
-    let creationDate = "";
-
-    const deltaSeconds = Date.now() - tweetObj.created_at / 1000;
-    const days = Math.floor(deltaSeconds / 86400); // 86400 seconds in a day
-    if (days < 1) {
-      creationDate = "Today";
-    } else if (days === 1) {
-      creationDate = "1 day ago";
-    } else {
-      creationDate = `${days} days ago`;
-    }
+    const user = tweetObj.user;
+    let creationDate = getDays(tweetObj.created_at);
 
     const $tweet = `
     <article class="tweet">
-    <header>
-      <div>
-      <img src="${avatar}" />
-      <br>
-      <span class="username">${name}</span>
-      </div>
-      <span class="handle">${handle}</span>
-    </header>
-    <p>${text}</p>
-    <footer>
-      <div class="tweet-date">
-      ${creationDate}
-      </div>
-      <div class="tweet-icons">
-        <span class="material-icons"> flag </span>
-        <span class="material-icons"> repeat </span>
-        <span class="material-icons"> favorite </span>
-      </div>
-    </footer>
-  </article>
+      <header>
+        <div>
+          <img src="${user.avatars}" />
+          <br>
+          <span class="username">${user.name}</span>
+        </div>
+        <span class="handle">${user.handle}</span>
+      </header>
+      <p>${tweetObj.content.text}</p>
+      <footer>
+        <div class="tweet-date">
+          ${creationDate}
+        </div>
+        <div class="tweet-icons">
+          <span class="material-icons"> flag </span>
+          <span class="material-icons"> repeat </span>
+          <span class="material-icons"> favorite </span>
+        </div>
+      </footer>
+    </article>
     `;
 
     return $tweet;
 
+  }
+
+  // Helper function to get string of days elapsed
+  const getDays = (timestamp) => {
+    const deltaSeconds = Date.now() - timestamp / 1000;
+    const days = Math.floor(deltaSeconds / 86400); // 86400 seconds in a day
+    if (days < 1) {
+      return "Today";
+    } else if (days === 1) {
+      return "1 day ago";
+    } else {
+      return `${days} days ago`;
+    }
   }
 
   renderTweets(data);
