@@ -63,6 +63,13 @@ $(document).ready(() => {
   // Submit form data using AJAX
   $('form').submit((event) => {
     event.preventDefault();
+    const tweetText = $('#tweet-text').val();
+    if (!tweetText) {
+      return alert("You can't submit an empty tweet!");
+    }
+    if (tweetText.length > 140) {
+      return alert(`Your tweet is ${Math.abs(140 - tweetText.length)} character(s) over the limit.`);
+    }
     const queryString = $('form').serialize();
     $.post('/tweets', queryString);
   })
