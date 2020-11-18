@@ -24,8 +24,7 @@ article.tweet:hover .handle {
 }
 
 p {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1.5em 0 2em 0;
   font-weight: 700;
 }
 
@@ -47,7 +46,7 @@ footer {
 article.tweet {
   width: 100%;
   padding: 1em;
-  margin: 2em 0 2em 0;
+  margin: 1.5em 0 1.5em 0;
   border: 4px solid #545149;
 }
 
