@@ -7,6 +7,11 @@
   border: 4px solid #545149;
 }
 
+/* Hover state */
+.tweet-container:hover {
+  box-shadow: 0.5em 0.5em #a2a3eb;
+}
+
 .tweet-body {
   margin-top: 1em;
   margin-bottom: 1em;
