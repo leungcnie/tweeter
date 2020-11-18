@@ -20,6 +20,7 @@ button {
 }
 
 textarea {
+  margin-top: 0.5em;
   font-size: 20px;
   resize: none;
   border: none;
@@ -28,8 +29,12 @@ textarea {
   border-bottom: 4px solid #545149;
 }
 
+label {
+  font-weight: 700;
+}
+
 section.new-tweet div {
-  margin-top: 12px;
+  margin-top: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
