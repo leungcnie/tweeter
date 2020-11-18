@@ -6,33 +6,6 @@
 
 $(document).ready(() => {
 
-  // Fake data taken from initial-tweets.json
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1605560006430
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1605646406430
-    }
-  ]
-
   // Append each tweet element to #tweets-container
   const renderTweets = function (tweets) {
     for (let i = tweets.length - 1; i >= 0; i--) {
@@ -87,13 +60,20 @@ $(document).ready(() => {
     }
   }
 
-  renderTweets(data);
-
   // Submit form data using AJAX
   $('form').submit((event) => {
     event.preventDefault();
     const queryString = $('form').serialize();
     $.post('/tweets', queryString);
   })
+
+  // Fetch tweets from /tweets page
+  const loadTweets = () => {
+    $.get('/tweets', (data, status) => {
+      renderTweets(data);
+    })
+  }
+
+  loadTweets();
 
 })
