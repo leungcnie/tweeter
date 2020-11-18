@@ -4,12 +4,16 @@
   align-items: center;
   width: 100%;
   margin: 2em;
-  border: 4px solid #545149;
 }
 
 /* Hover state */
-.tweet-container:hover {
+article.tweet:hover {
   box-shadow: 0.5em 0.5em #a2a3eb;
+}
+
+article.tweet:hover .tweet-icons {
+  display: flex;
+  color: #4056A1;
 }
 
 .tweet-body {
@@ -29,12 +33,13 @@ footer {
 
 /* Footer icons */
 .tweet-icons {
-  color: #4056A1;
+  display: none;
 }
 
 article.tweet {
   width: 100%;
   padding: 1em;
+  border: 4px solid #545149;
 }
 
 article.tweet header {
