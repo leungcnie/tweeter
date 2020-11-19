@@ -1,0 +1,25 @@
+@media screen and (min-width: 1024px) {
+  .header-main {
+    margin-top: 120px;
+    display: inline-flex;
+    width: 100%;
+  }
+  header.page-header {
+    margin: 2em;
+    width: 50%;
+  }
+  main {
+    margin-top: 120px;
+    padding-left: 2em;
+  }
+  .new-tweet {
+    width: 90%;
+  }
+  #tweets-container {
+    width: 90%;
+  }
+  #error-msg {
+    margin-top: 2em;
+    width: 90%;
+  }
+}
