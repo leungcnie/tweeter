@@ -5,6 +5,8 @@
  */
 
 $(document).ready(() => {
+  // Hide error message
+  $('#error-msg').hide();
 
   // Append each tweet element to #tweets-container
   const renderTweets = function (tweets) {
@@ -64,23 +66,20 @@ $(document).ready(() => {
   // Submit form data using AJAX
   $('form').submit((event) => {
     event.preventDefault();
+    $('#error-msg').slideUp();
     const tweetText = $('#tweet-text').val();
+    const isTweetValid = validateTweet(tweetText);
 
-    // Tweet validation
-    if (!tweetText) {
-      return alert("You can't submit an empty tweet!");
+    if (isTweetValid) {
+      // Submit form data
+      const queryString = $('#tweet-text').serialize();
+      $.post('/tweets', queryString, (data, status) => {
+        $('#tweet-text').val('');
+        $('.counter').val('140');
+        $('.counter').css('color', '#545149');
+        loadTweets();
+      });
     }
-    if (tweetText.length > 140) {
-      return alert(`Your tweet is ${Math.abs(140 - tweetText.length)} character(s) over the limit.`);
-    }
-
-    // Submit form data
-    const queryString = $('#tweet-text').serialize();
-    $.post('/tweets', queryString, (data, status) => {
-      $('#tweet-text').val('');
-      $('.counter').val('140');
-      loadTweets();
-    });
   })
 
   // Fetch tweets from /tweets page
@@ -97,6 +96,23 @@ $(document).ready(() => {
     return div.innerHTML;
   }
 
+  const validateTweet = (tweetText) => {
+    // Tweet validation
+    if (!tweetText) {
+      $('#error-text').text("Woops! You can't submit an empty tweet!");
+      $('#error-msg').slideDown();
+      return false;
+    }
+    if (tweetText.length > 140) {
+      $('#error-text').text("Too long! Maximum length is 140 characters.");
+      $('#error-msg').slideDown();
+      return false;
+    }
+    
+    return true;
+  }
+
+  // Load tweets on page load
   loadTweets();
 
 })
