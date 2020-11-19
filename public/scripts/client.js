@@ -30,7 +30,7 @@ $(document).ready(() => {
         </div>
         <span class="handle">${user.handle}</span>
       </header>
-      <p>${tweetObj.content.text}</p>
+      <p>${escape(tweetObj.content.text)}</p>
       <footer>
         <div class="tweet-date">
           ${creationDate}
@@ -75,9 +75,10 @@ $(document).ready(() => {
     }
 
     // Submit form data
-    const queryString = $('form').serialize();
+    const queryString = $('#tweet-text').serialize();
     $.post('/tweets', queryString, (data, status) => {
       $('#tweet-text').val('');
+      $('.counter').val('140');
       loadTweets();
     });
   })
@@ -87,6 +88,13 @@ $(document).ready(() => {
     $.get('/tweets', (data, status) => {
       renderTweets(data);
     })
+  }
+
+  // Helper function to convert text to XSS safe text
+  const escape = (text) => {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
   }
 
   loadTweets();
