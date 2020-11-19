@@ -9,13 +9,13 @@ $(document).ready(() => {
   $('#error-msg').hide();
 
   // Append each tweet element to #tweets-container
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     const tweetsContainer = $('#tweets-container').html('');
     for (let i = tweets.length - 1; i >= 0; i--) {
       let $tweet = createTweetElement(tweets[i]);
       tweetsContainer.append($tweet);
     }
-  }
+  };
 
   // Create tweet <article> element from tweet object
   const createTweetElement = (tweetObj) => {
@@ -48,7 +48,7 @@ $(document).ready(() => {
 
     return $tweet;
 
-  }
+  };
 
   // Helper function to get string of days elapsed
   const getDays = (timestamp) => {
@@ -61,7 +61,7 @@ $(document).ready(() => {
     } else {
       return `${days} days ago`;
     }
-  }
+  };
 
   // Submit form data using AJAX
   $('form').submit((event) => {
@@ -80,21 +80,21 @@ $(document).ready(() => {
         loadTweets();
       });
     }
-  })
+  });
 
   // Fetch tweets from /tweets page
   const loadTweets = () => {
     $.get('/tweets', (data, status) => {
       renderTweets(data);
-    })
-  }
+    });
+  };
 
   // Helper function to convert text to XSS safe text
   const escape = (text) => {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
-  }
+  };
 
   const validateTweet = (tweetText) => {
     // Tweet validation
@@ -110,9 +110,9 @@ $(document).ready(() => {
     }
     
     return true;
-  }
+  };
 
   // Load tweets on page load
   loadTweets();
 
-})
+});
