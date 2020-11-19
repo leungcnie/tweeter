@@ -50,19 +50,6 @@ $(document).ready(() => {
 
   };
 
-  // Helper function to get string of days elapsed
-  const getDays = (timestamp) => {
-    const deltaSeconds = (Date.now() - timestamp) / 1000;
-    const days = Math.floor(deltaSeconds / 86400); // 86400 seconds in a day
-    if (days < 1) {
-      return "Today";
-    } else if (days === 1) {
-      return "1 day ago";
-    } else {
-      return `${days} days ago`;
-    }
-  };
-
   // Submit form data using AJAX
   $('form').submit((event) => {
     event.preventDefault();
@@ -71,7 +58,6 @@ $(document).ready(() => {
     const isTweetValid = validateTweet(tweetText);
 
     if (isTweetValid) {
-      // Submit form data
       const queryString = $('#tweet-text').serialize();
       $.post('/tweets', queryString, (data, status) => {
         $('#tweet-text').val('');
@@ -89,15 +75,30 @@ $(document).ready(() => {
     });
   };
 
-  // Helper function to convert text to XSS safe text
+  // HELPER FUNCTIONS
+  
+  // Helper function to get string of days elapsed
+  const getDays = (timestamp) => {
+    const deltaSeconds = (Date.now() - timestamp) / 1000;
+    const days = Math.floor(deltaSeconds / 86400); // 86400 seconds in a day
+    if (days < 1) {
+      return "Today";
+    } else if (days === 1) {
+      return "1 day ago";
+    } else {
+      return `${days} days ago`;
+    }
+  };
+
+  // Convert text to XSS safe text
   const escape = (text) => {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
   };
 
+  // Validate tweet text; if invalid, return error message
   const validateTweet = (tweetText) => {
-    // Tweet validation
     if (!tweetText) {
       $('#error-text').text("Woops! You can't submit an empty tweet!");
       $('#error-msg').slideDown();
@@ -108,7 +109,7 @@ $(document).ready(() => {
       $('#error-msg').slideDown();
       return false;
     }
-    
+
     return true;
   };
 
