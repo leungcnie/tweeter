@@ -59,7 +59,7 @@ $(document).ready(() => {
 
     if (isTweetValid) {
       const queryString = $('#tweet-text').serialize();
-      $.post('/tweets', queryString, (data, status) => {
+      $.post('/tweets', queryString, () => {
         $('#tweet-text').val('');
         $('.counter').val('140');
         $('.counter').css('color', '#545149');
@@ -70,26 +70,14 @@ $(document).ready(() => {
 
   // Fetch tweets from /tweets page
   const loadTweets = () => {
-    $.get('/tweets', (data, status) => {
+    $.get('/tweets', (data) => {
       renderTweets(data);
     });
   };
 
-  // STRETCH: Show/hide compose tweets section when button is pressed
-  $('#compose-btn').click(() => {
-    const display = $('.new-tweet').css('display');
-    console.log(display);
-    if (display === 'none') {
-      $('.new-tweet').slideDown();
-      $('textarea').focus();
-    } else {
-      $('.new-tweet').slideUp();
-    }
-  });
-
   // HELPER FUNCTIONS
-  
-  // Helper function to get string of days elapsed
+
+  // Get string of days elapsed
   const getDays = (timestamp) => {
     const deltaSeconds = (Date.now() - timestamp) / 1000;
     const days = Math.floor(deltaSeconds / 86400); // 86400 seconds in a day
@@ -127,5 +115,4 @@ $(document).ready(() => {
 
   // Load tweets on page load
   loadTweets();
-
 });
