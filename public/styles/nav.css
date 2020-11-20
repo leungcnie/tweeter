@@ -24,15 +24,16 @@ nav div span {
   /* transform: rotate(90deg); */
 }
 
+/* Hover states for compose button */
 #compose-btn:hover {
   cursor: pointer;
 }
 
 #compose-btn:hover span {
-  color: red;
   animation: move 1s infinite alternate;
 }
 
+/* Animation for hover */
 @keyframes move {
   from {
     transform: translateY(0);
