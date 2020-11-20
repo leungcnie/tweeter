@@ -19,7 +19,25 @@ span {
 /* Arrow icon */
 nav div span {
   display: flex;
-  color: red;
+  /* color: red; */
   margin-left: 43%;
-  transform: rotate(90deg);
+  /* transform: rotate(90deg); */
+}
+
+#compose-btn:hover {
+  cursor: pointer;
+}
+
+#compose-btn:hover span {
+  color: red;
+  animation: move 1s infinite alternate;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10px);
+  }
 }
