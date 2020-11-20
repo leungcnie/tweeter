@@ -19,9 +19,7 @@ span {
 /* Arrow icon */
 nav div span {
   display: flex;
-  /* color: red; */
   margin-left: 43%;
-  /* transform: rotate(90deg); */
 }
 
 /* Hover states for compose button */
