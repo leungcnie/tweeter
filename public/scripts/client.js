@@ -75,6 +75,18 @@ $(document).ready(() => {
     });
   };
 
+  // STRETCH: Show/hide compose tweets section when button is pressed
+  $('#compose-btn').click(() => {
+    const display = $('.new-tweet').css('display');
+    console.log(display);
+    if (display === 'none') {
+      $('.new-tweet').slideDown();
+      $('textarea').focus();
+    } else {
+      $('.new-tweet').slideUp();
+    }
+  });
+
   // HELPER FUNCTIONS
   
   // Helper function to get string of days elapsed
