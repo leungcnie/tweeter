@@ -52,11 +52,11 @@ main.container {
   margin: auto;
 }
 
-.toggle-button {
+/* .toggle-button {
   color: red;
   position: fixed;
   bottom: 0;
   right: 0;
   padding: 1em;
   transform: rotate(-90deg) scale(3);
-}
+} */
