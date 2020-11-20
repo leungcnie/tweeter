@@ -51,3 +51,12 @@ main.container {
 #error-msg span {
   margin: auto;
 }
+
+.toggle-button {
+  color: red;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 1em;
+  transform: rotate(-90deg) scale(3);
+}
