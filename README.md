@@ -1,8 +1,10 @@
-# Tweeter Project
+# Tweeter
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page Twitter clone. 
 
-This repository is built upon the starter code provided by [LHL](https://github.com/lighthouse-labs/tweeter). Students fork and clone this repository, then flesh it out to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+A user can make new tweets and view tweets. Upon submission, tweets are validated (tweets must be within 140 characters and not empty, and must be converted to XSS safe text).
+
+This repository is built upon the starter code provided by [LHL](https://github.com/lighthouse-labs/tweeter). Tweeter is built with HTML, CSS, JS, jQuery and AJAX on the front-end, and Node, Express and MongoDB on the back-end.
 
 ## Getting Started
 
